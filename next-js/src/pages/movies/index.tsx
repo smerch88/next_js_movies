@@ -1,23 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
 
-import notFound from "../../../public/notfound.webp";
+import { useDispatch } from "react-redux";
 
-import { useSelector, useDispatch } from "react-redux";
-import { getMovies } from "@/redux/movies/movies-selectors";
-
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { fetchGetMovies } from "@/redux/movies/movies-operations";
 import { AppDispatch } from "@/redux/store";
+import MoviesList from "@/components/MoviesList/MoviesList";
 
 const Movies = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const moviesList = useSelector(getMovies);
-  const { Search } = moviesList;
-
   const onClickHandler = () => {
-    dispatch(fetchGetMovies("car"));
+    dispatch(fetchGetMovies("shrek"));
   };
 
   return (
@@ -25,40 +19,10 @@ const Movies = () => {
       <Head>
         <title>Movies</title>
       </Head>
-
-      <Button onClick={onClickHandler}>Search</Button>
-
-      <h1>Movies List:</h1>
-
-      <ul>
-        {Search &&
-          Search.map((movie: Movie) => (
-            <li key={movie.imdbID}>
-              {movie.Poster && movie.Poster !== "N/A" ? (
-                <Image
-                  src={movie.Poster}
-                  alt="poster"
-                  width={200}
-                  height={300}
-                  loading="lazy"
-                />
-              ) : (
-                <Image
-                  src={notFound}
-                  alt="poster"
-                  width={200}
-                  height={300}
-                  loading="lazy"
-                  placeholder="blur"
-                />
-              )}
-              <br />
-              <strong>{movie.Title}</strong>
-              <p>{movie.Year}</p>
-              <p>{movie.Type}</p>
-            </li>
-          ))}
-      </ul>
+      <Container>
+        <Button onClick={onClickHandler}>Search</Button>
+        <MoviesList />
+      </Container>
     </>
   );
 };
