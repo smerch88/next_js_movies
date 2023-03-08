@@ -10,8 +10,13 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["Products", "Pricing", "Blog"];
 import { FC, useState } from "react";
+import Link from "next/link";
+
+const pages = [
+  { id: "1", title: "Home", link: "/" },
+  { id: "2", title: "Movies", link: "/movies" },
+];
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -20,7 +25,7 @@ const Header: FC = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu: any = () => {
     setAnchorElNav(null);
   };
 
@@ -32,7 +37,7 @@ const Header: FC = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component={Link}
             href="/"
             sx={{
               mr: 2,
@@ -44,7 +49,7 @@ const Header: FC = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Movies Search
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -76,9 +81,11 @@ const Header: FC = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map(({ id, title, link }) => (
+                <MenuItem key={id} onClick={handleCloseNavMenu}>
+                  <Typography component={Link} href={link} textAlign="center">
+                    {title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -87,7 +94,7 @@ const Header: FC = () => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            component={Link}
             href=""
             sx={{
               mr: 2,
@@ -103,13 +110,15 @@ const Header: FC = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map(({ id, title, link }) => (
               <Button
-                key={page}
+                key={id}
                 onClick={handleCloseNavMenu}
+                component={Link}
+                href={link}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {title}
               </Button>
             ))}
           </Box>
