@@ -14,11 +14,10 @@ const Movies = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const moviesList = useSelector(getMovies);
-  const movies = moviesList.Search;
-  console.log("movies", movies);
+  const { Search } = moviesList;
 
   const onClickHandler = () => {
-    dispatch(fetchGetMovies());
+    dispatch(fetchGetMovies("car"));
   };
 
   return (
@@ -32,8 +31,8 @@ const Movies = () => {
       <h1>Movies List:</h1>
 
       <ul>
-        {movies &&
-          movies.map((movie: any) => (
+        {Search &&
+          Search.map((movie: Movie) => (
             <li key={movie.imdbID}>
               {movie.Poster && movie.Poster !== "N/A" ? (
                 <Image

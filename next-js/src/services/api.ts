@@ -6,7 +6,7 @@ export const omdbapi: any = axios.create({
   baseURL: "http://www.omdbapi.com/",
 });
 
-export const getMovies = async (movieName: any = "shrek"): Promise<any> => {
+export const getMovies = async (movieName: string = "shrek"): Promise<any> => {
   try {
     const { data }: AxiosResponse<any> = await omdbapi.get(
       `?s=${movieName}&apikey=${API_KEY}`

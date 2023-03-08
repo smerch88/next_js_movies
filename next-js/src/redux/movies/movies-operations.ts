@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchGetMovies = createAsyncThunk(
   "movies/getMovies",
-  async (movieName, thunkApi) => {
+  async (movieName: string, thunkApi) => {
     try {
       const res = await getMovies(movieName);
       // if (res.code === "ERR_BAD_REQUEST") {
