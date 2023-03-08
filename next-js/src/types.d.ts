@@ -5,3 +5,9 @@ interface Movie {
   Year: string;
   Type: string;
 }
+
+interface MoviesState {
+  movies: Movie[];
+  isLoading: boolean;
+  error: string | null;
+}

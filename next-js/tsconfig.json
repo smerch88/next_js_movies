@@ -18,6 +18,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/redux/movies/movies-operations.ts",
+    "src/services/api.ts",
+    "src/redux/store.ts",
+    "src/redux/movies/movies-slice.ts",
+    "src/redux/movies/movies-selectors.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,22 +1,25 @@
-import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 import notFound from "../../../public/notfound.webp";
 
-const Movies = () => {
-  const [movies, setMovies] = useState<Movie[] | null>(null);
+import { useSelector, useDispatch } from "react-redux";
+import { getMovies } from "@/redux/movies/movies-selectors";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(
-        "http://www.omdbapi.com/?s=spiderman&apikey=19759c28"
-      );
-      setMovies(data.Response === "True" ? data.Search : null);
-    };
-    fetchData();
-  }, []);
+import { Button } from "@mui/material";
+import { fetchGetMovies } from "@/redux/movies/movies-operations";
+import { AppDispatch } from "@/redux/store";
+
+const Movies = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const moviesList = useSelector(getMovies);
+  const movies = moviesList.Search;
+  console.log("movies", movies);
+
+  const onClickHandler = () => {
+    dispatch(fetchGetMovies());
+  };
 
   return (
     <>
@@ -24,11 +27,13 @@ const Movies = () => {
         <title>Movies</title>
       </Head>
 
+      <Button onClick={onClickHandler}>Search</Button>
+
       <h1>Movies List:</h1>
 
       <ul>
         {movies &&
-          movies.map((movie) => (
+          movies.map((movie: any) => (
             <li key={movie.imdbID}>
               {movie.Poster && movie.Poster !== "N/A" ? (
                 <Image
