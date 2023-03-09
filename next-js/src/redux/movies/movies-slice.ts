@@ -5,6 +5,8 @@ import { PayloadAction } from "@reduxjs/toolkit";
 const initialState: {
   movies: MoviesSearchResult;
   movieDetails: MovieDetailsSearchResult;
+  page: number;
+  query: string;
   isLoading: boolean;
   error: string | null;
 } = {
@@ -40,6 +42,8 @@ const initialState: {
     Website: "",
     Response: "",
   },
+  page: 1,
+  query: "",
   isLoading: false,
   error: null,
 };
@@ -47,7 +51,14 @@ const initialState: {
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setQuery: (state, action) => {
+      state.query = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchGetMovies.pending, (state) => {
@@ -84,5 +95,8 @@ const moviesSlice = createSlice({
       });
   },
 });
+
+export const { setPage } = moviesSlice.actions;
+export const { setQuery } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;

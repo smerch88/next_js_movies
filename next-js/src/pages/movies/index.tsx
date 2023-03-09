@@ -1,21 +1,12 @@
 import Head from "next/head";
 
-import { useDispatch } from "react-redux";
-
 import { Container } from "@mui/material";
-import { fetchGetMovies } from "@/redux/movies/movies-operations";
-import { AppDispatch } from "@/redux/store";
 
 import MoviesList from "@/components/MoviesList/MoviesList";
 import SearchForm from "@/components/SearchForm";
+import { ReposPagination } from "@/components/Pagination";
 
 const Movies = () => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  const onClickHandler = () => {
-    dispatch(fetchGetMovies("shrek"));
-  };
-
   return (
     <>
       <Head>
@@ -24,6 +15,7 @@ const Movies = () => {
       <Container>
         <SearchForm />
         <MoviesList />
+        <ReposPagination />
       </Container>
     </>
   );
