@@ -1,36 +1,53 @@
-// import Card from "@mui/material/Card";
-// import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
-// import Typography from "@mui/material/Typography";
-// import { Button, CardActionArea, CardActions } from "@mui/material";
+import { getMovieDetails } from "@/redux/movies/movies-selectors";
+import { useSelector } from "react-redux";
 
-// const MovieDetails = () => {
-//   //   const { Title, Poster, Type, Year } = movie;
-//   return (
-//     <>
-//       <Card sx={{ minWidth: 275 }}>
-//         <CardActionArea>
-//           <CardMedia component="img" height="140" image={Poster} alt="poster" />
-//           <CardContent>
-//             <Typography gutterBottom variant="h5" component="div">
-//               Title: {Title}
-//             </Typography>
-//             <Typography variant="body2" color="text.secondary">
-//               Type: {Type}
-//             </Typography>
-//             <Typography variant="body2" color="text.secondary">
-//               Year: {Year}
-//             </Typography>
-//           </CardContent>
-//         </CardActionArea>
-//         <CardActions>
-//           <Button size="small" color="primary">
-//             Details
-//           </Button>
-//         </CardActions>
-//       </Card>
-//     </>
-//   );
-// };
+const MovieDetails = () => {
+  const movie = useSelector(getMovieDetails);
+  const {
+    Title,
+    Year,
+    Rated,
+    Released,
+    Runtime,
+    Genre,
+    Director,
+    Writer,
+    Actors,
+    Plot,
+    Language,
+    Country,
+    Awards,
+    Poster,
+    Ratings,
+    Metascore,
+    imdbRating,
+    imdbVotes,
+    imdbID,
+    Type,
+    DVD,
+    BoxOffice,
+    Production,
+    Website,
+    Response,
+  } = movie;
 
-// export default MovieDetails;
+  return (
+    <>
+      <p>{Title}</p>
+      <p>{Year}</p>
+      <p>{Rated}</p>
+      <p>{Released}</p>
+      <p>{Runtime}</p>
+      <p>{Genre}</p>
+      <p>{Director}</p>
+      <p>{Writer}</p>
+      <p>{Actors}</p>
+      <p>{Plot}</p>
+      <p>{Language}</p>
+      <p>{Country}</p>
+      <p>{Awards}</p>
+    </>
+  );
+};
+
+export default MovieDetails;
