@@ -8,11 +8,15 @@ export const omdbapi: any = axios.create({
 
 export const getMovies = async (
   movieName: string,
-  page: number = 1
+  page: number,
+  movieType?: string,
+  movieYear?: string
 ): Promise<any> => {
   try {
     const { data }: AxiosResponse<any> = await omdbapi.get(
-      `?s=${movieName}&apikey=${API_KEY}&page=${page}`
+      `?s=${movieName}&apikey=${API_KEY}&page=${page}${
+        movieType ? `&type=${movieType}` : ""
+      }${movieYear ? `&y=${movieYear}` : ""}`
     );
     return data;
   } catch (error: any) {

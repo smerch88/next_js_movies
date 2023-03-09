@@ -7,6 +7,8 @@ const initialState: {
   movieDetails: MovieDetailsSearchResult;
   page: number;
   query: string;
+  type: string;
+  year: string;
   isLoading: boolean;
   error: string | null;
 } = {
@@ -44,6 +46,8 @@ const initialState: {
   },
   page: 1,
   query: "",
+  type: "",
+  year: "",
   isLoading: false,
   error: null,
 };
@@ -57,6 +61,12 @@ const moviesSlice = createSlice({
     },
     setQuery: (state, action) => {
       state.query = action.payload;
+    },
+    setType: (state, action) => {
+      state.type = action.payload;
+    },
+    setYear: (state, action) => {
+      state.year = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -98,5 +108,7 @@ const moviesSlice = createSlice({
 
 export const { setPage } = moviesSlice.actions;
 export const { setQuery } = moviesSlice.actions;
+export const { setType } = moviesSlice.actions;
+export const { setYear } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;

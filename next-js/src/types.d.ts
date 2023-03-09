@@ -54,4 +54,6 @@ interface MovieDetailsSearchResult {
 
 interface FormValues {
   movieName: string;
+  movieType: string;
+  movieYear: string;
 }

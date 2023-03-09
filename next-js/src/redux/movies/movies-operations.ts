@@ -4,11 +4,21 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchGetMovies = createAsyncThunk(
   "movies/getMovies",
   async (
-    { movieName, page }: { movieName: string; page: number },
+    {
+      movieName,
+      page,
+      movieType,
+      movieYear,
+    }: {
+      movieName: string;
+      page: number;
+      movieType?: string;
+      movieYear?: string;
+    },
     thunkApi
   ) => {
     try {
-      const res = await getMovies(movieName, page);
+      const res = await getMovies(movieName, page, movieType, movieYear);
       return res;
     } catch (error: any) {
       return thunkApi.rejectWithValue(error.message);

@@ -5,7 +5,7 @@ import { moviesReducer } from "./movies/movies-slice";
 
 const persistConfig = {
   key: "movies",
-  whitelist: ["movies"],
+  blacklist: [""],
   storage,
 };
 
