@@ -25,7 +25,7 @@ const Header: FC = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu: any = () => {
+  const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 

@@ -1,96 +1,49 @@
-// import { useState } from "react";
-// import {
-//   Box,
-//   Button,
-//   Card,
-//   CardActionArea,
-//   CardActions,
-//   CardContent,
-//   Divider,
-//   Typography,
-// } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/store";
+import { fetchGetMovieDetails } from "@/redux/movies/movies-operations";
+import { useRouter } from "next/router";
 
-// import { Link } from "react-router-dom";
+const MovieCard = ({ movie }: { movie: Movie }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
-// export const RepoCard = ({ item }) => {
-//   const [isCardClicked, setIsCardClicked] = useState(true);
+  const { Title, Poster, Type, Year, imdbID } = movie;
 
-//   const handleCardClick = () => {
-//     setIsCardClicked(!isCardClicked);
-//   };
+  const onClickHandler = () => {
+    dispatch(fetchGetMovieDetails(imdbID));
+    router.push("/");
+  };
 
-//   const handleLearnMoreClick = () => {
-//     window.open(item.html_url, "_blank");
-//   };
+  return (
+    <>
+      <Card sx={{ minWidth: 275 }}>
+        <CardActionArea>
+          <CardMedia component="img" height="140" image={Poster} alt="poster" />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Title: {Title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Type: {Type}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Year: {Year}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary" onClick={onClickHandler}>
+            Details
+          </Button>
+        </CardActions>
+      </Card>
+    </>
+  );
+};
 
-//   const date = new Date(item.created_at);
-
-//   const typographyStyle = {
-//     textOverflow: isCardClicked ? "ellipsis" : "unset",
-//     whiteSpace: isCardClicked ? "nowrap" : "unset",
-//     overflow: isCardClicked ? "hidden" : "unset",
-//   };
-
-//   return (
-//     <Card sx={{ minWidth: 275 }}>
-//       <CardActionArea onClick={handleCardClick}>
-//         <CardContent>
-//           <Typography sx={typographyStyle}>
-//             <b>Name:</b> {item.name}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Updated on</b> {date.toLocaleString()}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Language:</b> {item.language}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Description:</b> {item.description}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Forks:</b> {item.forks_count}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Watchers:</b> {item.watchers}
-//           </Typography>
-//           <Divider />
-//           <Typography sx={typographyStyle}>
-//             <b>Visibility:</b> {item.visibility}
-//           </Typography>
-//           <Divider />
-//           {!isCardClicked && (
-//             <Box sx={{ width: "40px", height: "40px" }}>
-//               <img
-//                 src={item.owner.avatar_url}
-//                 alt="user_avatar"
-//                 width="100%"
-//                 loading="lazy"
-//               />
-//             </Box>
-//           )}
-//           <Box
-//             component={Link}
-//             to={item.owner.html_url}
-//             target="blank"
-//             rel="noopener noreferrer"
-//             color="inherit"
-//           >
-//             <Typography sx={typographyStyle}>
-//               <b>Owner:</b> {item.owner.login}
-//             </Typography>
-//           </Box>
-//         </CardContent>
-//       </CardActionArea>
-//       <CardActions>
-//         <Button size="small" onClick={handleLearnMoreClick} variant="outlined">
-//           Check It
-//         </Button>
-//       </CardActions>
-//     </Card>
-//   );
-// };
+export default MovieCard;
