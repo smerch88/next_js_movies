@@ -14,7 +14,6 @@ export const getMovies = async (
     const { data }: AxiosResponse<any> = await omdbapi.get(
       `?s=${movieName}&apikey=${API_KEY}&page=${page}`
     );
-    console.log(data);
     return data;
   } catch (error: any) {
     return error;
@@ -26,7 +25,6 @@ export const getMovieDetails = async (IMDb: string = ""): Promise<any> => {
     const { data }: AxiosResponse<any> = await omdbapi.get(
       `?i=${IMDb}&apikey=${API_KEY}`
     );
-    console.log(data);
     return data;
   } catch (error: any) {
     return error;

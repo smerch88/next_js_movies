@@ -3,10 +3,11 @@ import * as yup from "yup";
 import { FC } from "react";
 
 import { Button, TextField, Box } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { fetchGetMovies } from "@/redux/movies/movies-operations";
 import { setPage, setQuery } from "@/redux/movies/movies-slice";
+import { getQuery } from "@/redux/movies/movies-selectors";
 
 const validationSchema = yup.object({
   movieName: yup.string().required("movieName is required"),
@@ -15,9 +16,11 @@ const validationSchema = yup.object({
 const SearchForm: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const query = useSelector(getQuery);
+
   const formik = useFormik<FormValues>({
     initialValues: {
-      movieName: "Shrek",
+      movieName: query,
     },
     validationSchema: validationSchema,
     onSubmit: (values: FormValues) => {
