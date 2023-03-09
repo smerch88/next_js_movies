@@ -16,7 +16,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
 
   const onClickHandler = () => {
     dispatch(fetchGetMovieDetails(imdbID));
-    router.push(`/movies/${imdbID}`);
+    router.push(`/movies/details?imdbID=${imdbID}&Title=${Title}`);
   };
 
   return (

@@ -51,3 +51,7 @@ interface MovieDetailsSearchResult {
   Website: string;
   Response: string;
 }
+
+interface FormValues {
+  movieName: string;
+}
