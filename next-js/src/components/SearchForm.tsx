@@ -6,7 +6,7 @@ import { Button, TextField, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { fetchGetMovies } from "@/redux/movies/movies-operations";
-import { setQuery } from "@/redux/movies/movies-slice";
+import { setPage, setQuery } from "@/redux/movies/movies-slice";
 
 const validationSchema = yup.object({
   movieName: yup.string().required("movieName is required"),
@@ -21,6 +21,7 @@ const SearchForm: FC = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values: FormValues) => {
+      dispatch(setPage(1));
       dispatch(setQuery(values.movieName));
       dispatch(fetchGetMovies({ movieName: values.movieName, page: 1 }));
     },
