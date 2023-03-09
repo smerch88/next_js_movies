@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 const API_KEY: string = "19759c28";
 
 export const omdbapi: any = axios.create({
-  baseURL: "http://www.omdbapi.com/",
+  baseURL: "https://www.omdbapi.com/",
 });
 
 export const getMovies = async (
