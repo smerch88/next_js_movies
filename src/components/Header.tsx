@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useTheme } from "@mui/material";
@@ -18,7 +19,7 @@ import Link from "next/link";
 
 const pages = [
   { id: "1", title: "Home", link: "/" },
-  { id: "2", title: "Movies", link: "/movies" },
+  { id: "2", title: "Search Movies", link: "/movies" },
 ];
 
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {
@@ -38,7 +39,9 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <LocalMoviesIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -54,7 +57,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
               textDecoration: "none",
             }}
           >
-            Movies Search
+            Movies
           </Typography>
           <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit">
             {theme.palette.mode === "dark" ? (
