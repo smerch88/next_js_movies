@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 
-const API_KEY: string = "19759c28";
+const API_KEY: string = "197dsadas59c28";
 
 export const omdbapi: any = axios.create({
-  baseURL: "https://www.omdbapi.com/",
+  baseURL: "http://www.omdbapi.com/",
 });
 
 export const getMovies = async (
@@ -11,26 +11,37 @@ export const getMovies = async (
   page: number,
   movieType?: string,
   movieYear?: string
-): Promise<any> => {
+): Promise<MoviesSearchResult> => {
   try {
-    const { data }: AxiosResponse<any> = await omdbapi.get(
-      `?s=${movieName}&apikey=${API_KEY}&page=${page}${
-        movieType ? `&type=${movieType}` : ""
-      }${movieYear ? `&y=${movieYear}` : ""}`
-    );
+    const { data, status }: AxiosResponse<MoviesSearchResult> =
+      await omdbapi.get(
+        `?s=${movieName}&apikey=${API_KEY}&page=${page}${
+          movieType ? `&type=${movieType}` : ""
+        }${movieYear ? `&y=${movieYear}` : ""}`
+      );
+    if (status !== 200) {
+      throw new Error(`Failed to fetch repository data: ${status}`);
+    }
     return data;
   } catch (error: any) {
+    console.log(error);
+
     return error;
   }
 };
 
-export const getMovieDetails = async (IMDb: string = ""): Promise<any> => {
+export const getMovieDetails = async (
+  IMDb: string = ""
+): Promise<MovieDetailsSearchResult> => {
   try {
-    const { data }: AxiosResponse<any> = await omdbapi.get(
-      `?i=${IMDb}&apikey=${API_KEY}`
-    );
+    const { data, status }: AxiosResponse<MovieDetailsSearchResult> =
+      await omdbapi.get(`?i=${IMDb}&apikey=${API_KEY}`);
+    if (status !== 200) {
+      throw new Error(`Failed to fetch repository data: ${status}`);
+    }
     return data;
   } catch (error: any) {
+    console.log(error);
     return error;
   }
 };
