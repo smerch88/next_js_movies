@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const API_KEY: string = "197dsadas59c28";
+const API_KEY = process.env.API_KEY;
 
 export const omdbapi: any = axios.create({
   baseURL: "http://www.omdbapi.com/",
