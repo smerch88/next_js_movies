@@ -21,7 +21,7 @@ const MoviesList = () => {
           List of movies: {totalResults} in total.
         </Typography>
       )}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mb={2}>
         {Search &&
           Search.map((movie: Movie) => (
             <Grid item key={movie.imdbID} xs={12} sm={6} md={4}>

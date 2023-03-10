@@ -1,16 +1,9 @@
 import { createTheme } from "@mui/material";
 import { teal } from "@mui/material/colors";
 
-export const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: teal[500],
-    },
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
+const components = {
+  MuiCssBaseline: {
+    styleOverrides: `
           @media screen and (min-width: 320px) {
             ::-webkit-scrollbar {
               width: 5px;
@@ -24,8 +17,17 @@ export const lightTheme = createTheme({
             }
           }
         `,
+  },
+};
+
+export const lightTheme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: teal[500],
     },
   },
+  components,
 });
 
 export const darkTheme = createTheme({
@@ -35,4 +37,5 @@ export const darkTheme = createTheme({
       main: teal[500],
     },
   },
+  components,
 });

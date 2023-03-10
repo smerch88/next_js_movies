@@ -47,7 +47,7 @@ const Home = ({ data }: { data: MoviesSearchResult }) => {
         <Typography variant="h2" component="h1" mb={2}>
           Best Movies of all times
         </Typography>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} mb={2}>
           {Search &&
             Search.slice(0, getGridSize()).map((movie: Movie) => (
               <Grid item key={movie.imdbID} xs={12} sm={6} md={4}>

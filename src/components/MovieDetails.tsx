@@ -133,6 +133,7 @@ const MovieDetails = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
+      mb={2}
     >
       <Box
         sx={{
@@ -218,20 +219,26 @@ const MovieDetails = () => {
             </AccordionDetails>
           </Accordion>
           {accordions &&
-            accordions.map((item) => (
-              <Accordion key={item?.id}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>{item?.name}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>{item?.value}</Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
+            accordions.map((item) => {
+              if (item.value !== "N/A" && item.value) {
+                return (
+                  <Accordion key={item.id}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={`panel${item.id}-content`}
+                      id={`panel${item.id}-header`}
+                    >
+                      <Typography>{item.name}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>{item.value}</Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                );
+              } else {
+                return null;
+              }
+            })}
         </Box>
       </Box>
     </Box>
