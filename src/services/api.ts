@@ -24,8 +24,6 @@ export const getMovies = async (
     }
     return data;
   } catch (error: any) {
-    console.log(error);
-
     return error;
   }
 };
@@ -41,7 +39,6 @@ export const getMovieDetails = async (
     }
     return data;
   } catch (error: any) {
-    console.log(error);
     return error;
   }
 };
