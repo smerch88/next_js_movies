@@ -140,6 +140,7 @@ const MovieDetails = () => {
           backgroundColor: `rgba(255, 255, 255, 0.7)`,
         }}
         pb={2}
+        pt={2}
       >
         <Box
           sx={{
