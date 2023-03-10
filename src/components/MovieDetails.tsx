@@ -133,13 +133,13 @@ const MovieDetails = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
-      mb={2}
     >
       <Box
         sx={{
           backdropFilter: "blur(15px)",
           backgroundColor: `rgba(255, 255, 255, 0.7)`,
         }}
+        pb={2}
       >
         <Box
           sx={{

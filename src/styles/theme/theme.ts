@@ -16,6 +16,11 @@ const components = {
               border-radius: 5px;
             }
           }
+          #__next {
+              display: flex;
+              flex-direction: column;
+              min-height: 100vh;
+            }
         `,
   },
 };
