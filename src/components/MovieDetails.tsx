@@ -94,11 +94,6 @@ const MovieDetails = () => {
       value: Awards,
     },
     {
-      id: 14,
-      name: "Poster",
-      value: Poster,
-    },
-    {
       id: 15,
       name: "Metascore",
       value: Metascore,
