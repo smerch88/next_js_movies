@@ -14,6 +14,7 @@ const MOVIE_TITLES = [
   "the matrix",
   "star wars",
 ];
+
 export async function getServerSideProps() {
   const title = MOVIE_TITLES[Math.floor(Math.random() * MOVIE_TITLES.length)];
   const res = await fetch(
@@ -25,6 +26,17 @@ export async function getServerSideProps() {
 
 const Home = ({ data }: { data: MoviesSearchResult }) => {
   const { Search } = data;
+
+  const getGridSize = () => {
+    if (window.innerWidth < 600) {
+      return 4;
+    } else if (window.innerWidth < 960) {
+      return 4;
+    } else {
+      return 3;
+    }
+  };
+
   return (
     <>
       <Head>
@@ -37,7 +49,7 @@ const Home = ({ data }: { data: MoviesSearchResult }) => {
         </Typography>
         <Grid container spacing={2}>
           {Search &&
-            Search.slice(0, 3).map((movie: Movie) => (
+            Search.slice(0, getGridSize()).map((movie: Movie) => (
               <Grid item key={movie.imdbID} xs={12} sm={6} md={4}>
                 <MovieCard movie={movie} />
               </Grid>
