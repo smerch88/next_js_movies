@@ -1,14 +1,14 @@
 import { FC, ReactNode } from "react";
-
 import Header from "./Header";
 
-type layoutProps = {
+type LayoutProps = {
   children: ReactNode;
+  toggleTheme: () => void;
 };
 
-const Layout: FC<layoutProps> = ({ children }) => (
+const Layout: FC<LayoutProps> = ({ children, toggleTheme }) => (
   <>
-    <Header />
+    <Header toggleTheme={toggleTheme} />
     {children}
   </>
 );

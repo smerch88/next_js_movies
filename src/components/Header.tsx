@@ -9,6 +9,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useTheme } from "@mui/material";
 
 import { FC, useState } from "react";
 import Link from "next/link";
@@ -18,8 +21,10 @@ const pages = [
   { id: "2", title: "Movies", link: "/movies" },
 ];
 
-const Header: FC = () => {
+const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const theme = useTheme();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -51,7 +56,13 @@ const Header: FC = () => {
           >
             Movies Search
           </Typography>
-
+          <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit">
+            {theme.palette.mode === "dark" ? (
+              <Brightness4Icon />
+            ) : (
+              <Brightness7Icon />
+            )}
+          </IconButton>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

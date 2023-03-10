@@ -57,3 +57,7 @@ interface FormValues {
   movieType: string;
   movieYear: string;
 }
+
+interface HeaderProps {
+  toggleTheme: () => void;
+}
