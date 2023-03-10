@@ -17,6 +17,9 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
 
   const { Title, Poster, Type, Year, imdbID } = movie;
 
+  const image404 =
+    "https://img.freepik.com/free-vector/page-found-concept-illustration_114360-1869.jpg?w=740&t=st=1678459439~exp=1678460039~hmac=9aebc1706c1f7becefe5772d0ed7525fdcce17dc865963ce292d0b912d382034";
+
   const onClickHandler = () => {
     dispatch(fetchGetMovieDetails(imdbID));
     router.push(`/movies/details?imdbID=${imdbID}&Title=${Title}`);
@@ -36,7 +39,12 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     <>
       <Card sx={{ minWidth: 275 }}>
         <CardActionArea onClick={handleCardClick}>
-          <CardMedia component="img" height="500" image={Poster} alt="poster" />
+          <CardMedia
+            component="img"
+            height="500"
+            image={Poster !== "N/A" ? Poster : image404}
+            alt="poster"
+          />
           <CardContent>
             <Typography
               gutterBottom
