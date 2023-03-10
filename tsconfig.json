@@ -26,7 +26,8 @@
     "src/services/api.ts",
     "src/redux/store.ts",
     "src/redux/movies/movies-slice.ts",
-    "src/redux/movies/movies-selectors.ts"
+    "src/redux/movies/movies-selectors.ts",
+    "src/pages/_document.tsx"
   ],
   "exclude": ["node_modules"]
 }
