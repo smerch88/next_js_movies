@@ -95,7 +95,7 @@ const SearchForm: FC = () => {
           fullWidth
           id="movieName"
           name="movieName"
-          label="movieName"
+          label="Enter movie name..."
           value={formik.values.movieName}
           onChange={formik.handleChange}
           error={formik.touched.movieName && Boolean(formik.errors.movieName)}
@@ -113,9 +113,9 @@ const SearchForm: FC = () => {
         </Button>
         {showAdvancedOptions && (
           <FormControl fullWidth sx={{ marginBottom: theme.spacing(2) }}>
-            <InputLabel id="sort-label">movieType</InputLabel>
+            <InputLabel id="sort-label">Enter movie type...</InputLabel>
             <Select
-              label="movieType"
+              label="Enter movie type..."
               labelId="movieType"
               id="movieType"
               name="movieType"
@@ -139,7 +139,7 @@ const SearchForm: FC = () => {
             fullWidth
             id="movieYear"
             name="movieYear"
-            label="movieYear"
+            label="Enter movie year..."
             value={formik.values.movieYear}
             onChange={formik.handleChange}
             error={formik.touched.movieYear && Boolean(formik.errors.movieYear)}
