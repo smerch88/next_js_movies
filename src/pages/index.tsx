@@ -1,12 +1,24 @@
 import Head from "next/head";
-
 import { Grid, Typography, Container } from "@mui/material";
 import MovieCard from "@/components/MoviesList/MovieCard";
 
+const MOVIE_TITLES = [
+  "shrek",
+  "back to the future",
+  "avatar",
+  "the godfather",
+  "the shawshank redemption",
+  "the dark knight",
+  "pulp fiction",
+  "forrest gump",
+  "the matrix",
+  "star wars",
+];
 export async function getServerSideProps() {
-  const res =
-    await fetch(` https://www.omdbapi.com/?s=shrek&apikey=19759c28&page=1&type=movie
-`);
+  const title = MOVIE_TITLES[Math.floor(Math.random() * MOVIE_TITLES.length)];
+  const res = await fetch(
+    `https://www.omdbapi.com/?s=${title}&apikey=19759c28&page=1&type=movie`
+  );
   const data = await res.json();
   return { props: { data } };
 }
