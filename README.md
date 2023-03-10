@@ -1,38 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#next-js-movies)
 
-## Getting Started
+# ➤ Next Js Movies
 
-First, run the development server:
+<h1>Next Js Movies Search App</h1>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<p>Movies Search Application. Test Task.</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#what-this-app-can-do)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## ➤ What this App can do?
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This app allows users to search for movies by title and displays the results with relevant details such as movie poster, title, release year, and a brief summary. Users can click on a movie to view more detailed information, such as the movie's rating, genre, cast, and reviews.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Some of the key features of this app include:
 
-## Learn More
+- **Real-time search:** Search results are updated dynamically as the user types in the search query, providing a seamless and responsive user experience.
 
-To learn more about Next.js, take a look at the following resources:
+- **Responsive design:** The app is designed to be fully responsive on all devices, from mobile to desktop, to provide an optimal viewing experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Pagination:** The search results are paginated to improve performance and reduce the load time of the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **State management:** The app uses Redux to manage the application's state, providing a predictable and scalable way to handle complex application logic.
 
-## Deploy on Vercel
+- **Third-party API integration:** The app integrates with the OMDb API to retrieve movie data, including posters, titles, ratings, and reviews.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Overall, this app provides an easy-to-use and intuitive interface for searching movies, and can be used as a starting point for building more advanced movie-related applications.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Getting Started</h2>
+
+<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.</p>
+
+<h3>If you want to raise limit of requests to api, create .env file in folder with package.json </h3>
+
+<p>Write inside next code:</p>
+
+<pre>
+<code>API_KEY='YOUR API KEY'</code>
+</pre>
+
+<h3>Installing</h3>
+
+<p>A step by step guide on how to get the development environment running.</p>
+
+<p>Clone repository or get the copy in any other way.</p>
+
+<pre>
+<code>npm i</code>
+<code>npm run dev</code>
+</pre>
+
+<h2>Built With</h2>
+
+<ul>
+  <li><a href="https://nextjs.org/">Nex JS</a> - The web framework used</li>
+  <li><a href="https://redux.js.org/">Redux</a> - A Predictable State Container for JS Apps</li>
+  <li><a href="https://mui.com/">MUI</a> - The library used</li>
+  <li> And many other ...</li>
+</ul>
+
+<h2>Author</h2>
+
+<ul>
+  <li><strong>Frontend Developer</strong> - <a href="https://github.com/smerch88">Smerch88</a></li>
+</ul>
