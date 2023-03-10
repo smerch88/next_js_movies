@@ -96,7 +96,12 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
             >
               {pages.map(({ id, title, link }) => (
                 <MenuItem key={id} onClick={handleCloseNavMenu}>
-                  <Typography component={Link} href={link} textAlign="center">
+                  <Typography
+                    component={Link}
+                    href={link}
+                    textAlign="center"
+                    sx={{ color: "inherit", textDecoration: "none" }}
+                  >
                     {title}
                   </Typography>
                 </MenuItem>
@@ -110,7 +115,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
             variant="h5"
             noWrap
             component={Link}
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
