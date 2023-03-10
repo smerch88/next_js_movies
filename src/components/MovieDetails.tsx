@@ -162,16 +162,18 @@ const MovieDetails = () => {
           <Typography variant="subtitle2" gutterBottom>
             {Genre}
           </Typography>
-          <StyledImageBox>
-            <Image
-              src={Poster}
-              width={200}
-              height={300}
-              alt="cinema"
-              placeholder="blur"
-              blurDataURL={blurDataURL}
-            />
-          </StyledImageBox>
+          {Poster !== "N/A" ? (
+            <StyledImageBox>
+              <Image
+                src={Poster}
+                width={200}
+                height={300}
+                alt="cinema"
+                placeholder="blur"
+                blurDataURL={blurDataURL}
+              />
+            </StyledImageBox>
+          ) : null}
           <Typography variant="body1" gutterBottom>
             {Plot}
           </Typography>
