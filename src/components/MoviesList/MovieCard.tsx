@@ -3,11 +3,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import { useDispatch } from "react-redux";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
+
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { fetchGetMovieDetails } from "@/redux/movies/movies-operations";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { getFavourites } from "@/redux/movies/movies-selectors";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "@/redux/movies/movies-slice";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +24,8 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   const [isCardClicked, setIsCardClicked] = useState(true);
 
   const { Title, Poster, Type, Year, imdbID } = movie;
+
+  const favList = useSelector(getFavourites);
 
   const image404 =
     "https://img.freepik.com/free-vector/page-found-concept-illustration_114360-1869.jpg?w=740&t=st=1678459439~exp=1678460039~hmac=9aebc1706c1f7becefe5772d0ed7525fdcce17dc865963ce292d0b912d382034";
@@ -33,6 +43,18 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     textOverflow: isCardClicked ? "ellipsis" : "unset",
     whiteSpace: isCardClicked ? "nowrap" : "unset",
     overflow: isCardClicked ? "hidden" : "unset",
+  };
+
+  const isInFavorites = () => {
+    return favList.some((favorite: string) => favorite === imdbID);
+  };
+
+  const handleFavoriteClick = () => {
+    if (isInFavorites()) {
+      dispatch(removeFromFavorites(imdbID));
+    } else {
+      dispatch(addToFavorites(imdbID));
+    }
   };
 
   return (
@@ -74,6 +96,11 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
           <Button size="small" color="primary" onClick={onClickHandler}>
             Details
           </Button>
+          {isInFavorites() ? (
+            <StarIcon color="secondary" onClick={handleFavoriteClick} />
+          ) : (
+            <StarBorderIcon color="secondary" onClick={handleFavoriteClick} />
+          )}
         </CardActions>
       </Card>
     </>

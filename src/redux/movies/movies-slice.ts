@@ -9,6 +9,7 @@ const initialState: {
   query: string;
   type: string;
   year: string;
+  favourites: string[];
   isLoading: boolean;
   error: string | null;
 } = {
@@ -48,6 +49,7 @@ const initialState: {
   query: "",
   type: "",
   year: "",
+  favourites: [],
   isLoading: false,
   error: null,
 };
@@ -67,6 +69,14 @@ const moviesSlice = createSlice({
     },
     setYear: (state, action) => {
       state.year = action.payload;
+    },
+    addToFavorites: (state, action: PayloadAction<string>) => {
+      state.favourites.push(action.payload);
+    },
+    removeFromFavorites: (state, action: PayloadAction<string>) => {
+      state.favourites = state.favourites.filter(
+        (imdbID) => imdbID !== action.payload
+      );
     },
   },
   extraReducers: (builder) => {
@@ -110,5 +120,7 @@ export const { setPage } = moviesSlice.actions;
 export const { setQuery } = moviesSlice.actions;
 export const { setType } = moviesSlice.actions;
 export const { setYear } = moviesSlice.actions;
+export const { addToFavorites } = moviesSlice.actions;
+export const { removeFromFavorites } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;
