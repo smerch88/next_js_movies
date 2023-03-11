@@ -11,5 +11,5 @@ export const getYear = (state: RootState): string => state.movies.year;
 export const getIsLoading = (state: RootState): boolean =>
   state.movies.isLoading;
 export const getError = (state: RootState): string | null => state.movies.error;
-export const getFavourites = (state: RootState): string[] =>
+export const getFavourites = (state: RootState): Movie[] =>
   state.movies.favourites;

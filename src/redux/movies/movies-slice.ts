@@ -9,7 +9,7 @@ const initialState: {
   query: string;
   type: string;
   year: string;
-  favourites: string[];
+  favourites: Movie[];
   isLoading: boolean;
   error: string | null;
 } = {
@@ -70,12 +70,13 @@ const moviesSlice = createSlice({
     setYear: (state, action) => {
       state.year = action.payload;
     },
-    addToFavorites: (state, action: PayloadAction<string>) => {
+    addToFavorites: (state, action: PayloadAction<Movie>) => {
       state.favourites.push(action.payload);
     },
-    removeFromFavorites: (state, action: PayloadAction<string>) => {
+    removeFromFavorites: (state, action: PayloadAction<Movie>) => {
+      const imdbID = action.payload.imdbID;
       state.favourites = state.favourites.filter(
-        (imdbID) => imdbID !== action.payload
+        (movie) => movie.imdbID !== imdbID
       );
     },
   },

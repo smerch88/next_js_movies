@@ -46,14 +46,14 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   };
 
   const isInFavorites = () => {
-    return favList.some((favorite: string) => favorite === imdbID);
+    return favList.some((favorite: Movie) => favorite.imdbID === imdbID);
   };
 
   const handleFavoriteClick = () => {
     if (isInFavorites()) {
-      dispatch(removeFromFavorites(imdbID));
+      dispatch(removeFromFavorites(movie));
     } else {
-      dispatch(addToFavorites(imdbID));
+      dispatch(addToFavorites(movie));
     }
   };
 

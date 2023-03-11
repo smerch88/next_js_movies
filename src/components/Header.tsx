@@ -19,6 +19,7 @@ import Link from "next/link";
 const pages = [
   { id: "1", title: "Home", link: "/" },
   { id: "2", title: "Search Movies", link: "/movies" },
+  { id: "3", title: "Saved", link: "/saved" },
 ];
 
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {

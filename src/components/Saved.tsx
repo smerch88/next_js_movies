@@ -1,24 +1,20 @@
-import { getMovies, getError } from "@/redux/movies/movies-selectors";
+import { getError, getFavourites } from "@/redux/movies/movies-selectors";
 
 import Typography from "@mui/material/Typography";
 import { Grid, Alert } from "@mui/material";
 
 import { useSelector } from "react-redux";
-import MovieCard from "./MovieCard";
+import MovieCard from "./MoviesList/MovieCard";
 
-const MoviesList = () => {
-  const movies = useSelector(getMovies);
+const Saved = () => {
+  const Search = useSelector(getFavourites);
   const error = useSelector(getError);
-  const { Search, totalResults, Response } = movies;
   return (
     <>
       {error && <Alert severity="error">{error}</Alert>}
-      {Response === "False" ? (
-        <Alert severity="warning">No Results</Alert>
-      ) : null}
       {Search && (
         <Typography variant="h4" component="h2">
-          List of movies: {totalResults} in total.
+          List of saved: {Search.length} in total.
         </Typography>
       )}
       <Grid container spacing={2} mb={2}>
@@ -33,4 +29,4 @@ const MoviesList = () => {
   );
 };
 
-export default MoviesList;
+export default Saved;
